@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>แบบสอบถาม</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bg-decoration">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <main class="card">
+    <!-- Progress bar -->
+    <div class="progress-wrap">
+      <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+      <span class="progress-text" id="progressText">ขั้นตอนที่ 1 จาก 6</span>
+    </div>
+
+    <form id="surveyForm" autocomplete="off">
+      <!-- ===== STEP 0: ข้อมูลพื้นฐาน ===== -->
+      <section class="step active" data-step="0">
+        <div class="step-head">
+          <span class="step-badge">ข้อมูลพื้นฐาน</span>
+          <h1>ยินดีต้อนรับ 👋</h1>
+          <p class="subtitle">กรุณากรอกข้อมูลของคุณเพื่อเริ่มทำแบบสอบถาม</p>
+        </div>
+
+        <div class="field">
+          <label for="fullName">ชื่อ-นามสกุล <span class="req">*</span></label>
+          <input type="text" id="fullName" name="fullName" placeholder="เช่น สมชาย ใจดี" required />
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="age">อายุ <span class="req">*</span></label>
+            <input type="number" id="age" name="age" placeholder="เช่น 25" min="1" max="120" required />
+          </div>
+          <div class="field">
+            <label for="gender">เพศ</label>
+            <select id="gender" name="gender">
+              <option value="">— เลือก —</option>
+              <option value="ชาย">ชาย</option>
+              <option value="หญิง">หญิง</option>
+              <option value="อื่นๆ">อื่นๆ</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="email">อีเมล</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" />
+          </div>
+          <div class="field">
+            <label for="phone">เบอร์โทรศัพท์</label>
+            <input type="tel" id="phone" name="phone" placeholder="08X-XXX-XXXX" />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="occupation">อาชีพ / รายละเอียดเพิ่มเติม</label>
+          <textarea id="occupation" name="occupation" rows="3" placeholder="บอกเราเกี่ยวกับตัวคุณสักหน่อย..."></textarea>
+        </div>
+      </section>
+
+      <!-- ===== STEP 1-5: คำถามตัวเลือก ===== -->
+      <!-- แต่ละ section จะถูกสร้างจาก template ใน script.js -->
+      <div id="questionSteps"></div>
+
+      <!-- ===== หน้าสรุป / สำเร็จ ===== -->
+      <section class="step" data-step="done">
+        <div class="done-box">
+          <div class="check-circle">
+            <svg viewBox="0 0 52 52"><path d="M14 27 l8 8 l16 -18" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h1>ส่งข้อมูลเรียบร้อย! 🎉</h1>
+          <p class="subtitle">ขอบคุณที่ทำแบบสอบถาม ข้อมูลของคุณถูกบันทึกเรียบร้อยแล้ว</p>
+          <button type="button" class="btn btn-primary" onclick="location.reload()">ทำแบบสอบถามอีกครั้ง</button>
+        </div>
+      </section>
+
+      <!-- ===== ปุ่มควบคุม ===== -->
+      <div class="nav-buttons" id="navButtons">
+        <button type="button" class="btn btn-ghost" id="btnPrev">← ย้อนกลับ</button>
+        <button type="button" class="btn btn-primary" id="btnNext">ถัดไป →</button>
+        <button type="submit" class="btn btn-primary" id="btnSubmit">ส่งข้อมูล ✓</button>
+      </div>
+    </form>
+  </main>
+
+  <div class="toast" id="toast"></div>
+
+  <!-- แก้ไข URL นี้เป็น Web App URL ของคุณจาก Google Apps Script -->
+  <script>
+    window.CONFIG = {
+      SCRIPT_URL: "https://script.google.com/macros/s/AKfycbx-U0CsCfOo9lqXLaeDddgtYJXFh4rXXraw_7ARV0zBxRKsKeAJSX2Sy_N13eUFyrW9Bg/exec"
+    };
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>
