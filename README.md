@@ -4,6 +4,9 @@
 เมื่อกดส่ง ข้อมูลจะถูกบันทึกลง Google Sheet โดยอัตโนมัติผ่าน Google Apps Script
 (ไม่ต้องมี server ของตัวเอง ไม่ต้องตั้งค่า credentials)
 
+<img width="733" height="640" alt="Screenshot 2026-07-23 093543" src="https://github.com/user-attachments/assets/ccb5e477-daa4-48f7-97fe-ae75e3d9f055" />
+<img width="1316" height="222" alt="image" src="https://github.com/user-attachments/assets/f2b78f2c-cc54-4391-ae95-10f71541c10a" />
+
 ## โครงสร้างไฟล์
 
 ```
