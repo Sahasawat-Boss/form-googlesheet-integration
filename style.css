@@ -257,3 +257,14 @@ input.error, select.error { border-color: #ef4444; box-shadow: 0 0 0 4px #fee2e2
   .step-head h1 { font-size: 22px; }
   .btn { padding: 13px 20px; font-size: 14px; }
 }
+
+/* ===== honeypot (กันสแปม) — ซ่อนจากผู้ใช้จริง แต่ bot มองเห็น ===== */
+.hp-field {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}

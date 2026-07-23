@@ -163,6 +163,28 @@ btnPrev.addEventListener("click", () => {
 });
 
 // ============================================================
+//  ระบบกันสแปม (ฝั่ง client) — ทำงานคู่กับ Code.gs
+// ============================================================
+// เวลาที่ผู้ใช้เริ่มเปิดฟอร์ม (ใช้ตรวจว่าไม่ได้ส่งเร็วผิดปกติแบบ bot)
+const FORM_STARTED_AT = Date.now();
+
+// clientId ประจำเครื่อง (เก็บใน localStorage) ใช้ทำ rate limit ฝั่ง server
+function getClientId() {
+  try {
+    let id = localStorage.getItem("survey_client_id");
+    if (!id) {
+      id =
+        (crypto.randomUUID && crypto.randomUUID()) ||
+        "c" + Date.now() + Math.random().toString(36).slice(2);
+      localStorage.setItem("survey_client_id", id);
+    }
+    return id;
+  } catch {
+    return "c" + Date.now();
+  }
+}
+
+// ============================================================
 //  ส่งข้อมูลไป Google Sheet
 // ============================================================
 document.getElementById("surveyForm").addEventListener("submit", async (e) => {
@@ -177,6 +199,11 @@ document.getElementById("surveyForm").addEventListener("submit", async (e) => {
     phone: document.getElementById("phone").value.trim(),
     occupation: document.getElementById("occupation").value.trim(),
     submittedAt: new Date().toISOString(),
+    // ---- ฟิลด์กันสแปม ----
+    token: window.CONFIG.FORM_TOKEN, // shared token ตรวจฝั่ง server
+    clientId: getClientId(), // ใช้ rate limit ต่อเครื่อง
+    startedAt: FORM_STARTED_AT, // ตรวจ timing (เร็วไป = bot)
+    website: document.getElementById("website").value, // honeypot (ต้องว่าง)
   };
   QUESTIONS.forEach((q, i) => {
     const sel = document.querySelector(`input[name="q${i + 1}"]:checked`);

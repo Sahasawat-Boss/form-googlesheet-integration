@@ -71,3 +71,6 @@ python -m http.server 8000
 โค้ดใช้ `mode: "no-cors"` ในการ POST ทำให้ browser ส่งข้อมูลได้โดยไม่ติด CORS
 แต่แลกกับการที่ JavaScript อ่านค่า response กลับมาไม่ได้ — ถือว่า "ไม่ error = ส่งสำเร็จ"
 หากต้องการอ่าน response จริง (เช่น ยืนยันผลลัพธ์) ต้องตั้งค่า CORS header เพิ่มเติมฝั่ง Apps Script
+
+https://docs.google.com/spreadsheets/d/1_EsN_3HQ_64LnzG4SvnxBPs7AoBcAzATmjBvWhmn0TY/edit?gid=768700194#gid=768700194
+https://script.google.com/u/0/home/projects/1NuKmsX646N6Kxq0hd93eyjVFTMY2t2zhYD2YI-9ToFqd9LSx4n7Pj5g4/edit

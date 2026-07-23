@@ -86,6 +86,12 @@
         </div>
       </section>
 
+      <!-- Honeypot: ซ่อนจากผู้ใช้จริง bot มักกรอกทุกช่อง ถ้ามีค่า = สแปม -->
+      <div class="hp-field" aria-hidden="true">
+        <label for="website">Website</label>
+        <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+      </div>
+
       <!-- ===== ปุ่มควบคุม ===== -->
       <div class="nav-buttons" id="navButtons">
         <button type="button" class="btn btn-ghost" id="btnPrev">← ย้อนกลับ</button>
@@ -100,7 +106,9 @@
   <!-- แก้ไข URL นี้เป็น Web App URL ของคุณจาก Google Apps Script -->
   <script>
     window.CONFIG = {
-      SCRIPT_URL: "https://script.google.com/macros/s/AKfycbx-U0CsCfOo9lqXLaeDddgtYJXFh4rXXraw_7ARV0zBxRKsKeAJSX2Sy_N13eUFyrW9Bg/exec"
+      SCRIPT_URL: "https://script.google.com/macros/s/AKfycbx-U0CsCfOo9lqXLaeDddgtYJXFh4rXXraw_7ARV0zBxRKsKeAJSX2Sy_N13eUFyrW9Bg/exec",
+      // ต้องตรงกับ FORM_TOKEN ใน apps-script/Code.gs
+      FORM_TOKEN: "CHANGE_ME_TO_A_RANDOM_STRING"
     };
   </script>
   <script src="script.js"></script>
